@@ -5,6 +5,9 @@ using UnityEngine;
 public class SkeletonManScript : MonoBehaviour
 {
     public float playerSpeed;
+    public float speedMultiplier;
+    public float speedIncreaseMilestone;
+    private float speedMiltestoneCount;
     private Rigidbody2D rb;
     private Vector2 playerDirection;
 
@@ -17,12 +20,18 @@ public class SkeletonManScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         float directionY = Input.GetAxisRaw("Vertical");
-        playerDirection = new Vector2(-7, directionY);
+        playerDirection = new Vector2(-7, directionY).normalized;
     }
 
     void FixedUpdate()
     {
+        if (transform.playerDirection.x > speedMiltestoneCount)
+        {
+            speedMiltestoneCount += speedIncreaseMilestone;
+            playerSpeed = playerSpeed + speedMultiplier;
+        }
         rb.velocity = new Vector2(0, playerDirection.y * playerSpeed);
     }
 }
