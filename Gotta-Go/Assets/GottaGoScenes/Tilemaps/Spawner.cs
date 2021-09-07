@@ -12,7 +12,7 @@ public class Spawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rightMost = GameObject.Find("TilemapONE");
+        rightMost = GameObject.Find("TilemapTwo");
         grid = GameObject.Find("Grid");
     }
 

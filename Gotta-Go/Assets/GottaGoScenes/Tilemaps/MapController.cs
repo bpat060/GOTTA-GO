@@ -20,7 +20,7 @@ public class MapController : MonoBehaviour
     {
         if(this.transform.position.x <= leftMost.transform.position.x)
         {
-            //Destroy(this.gameObject);
+            Destroy(this.gameObject);
         }
     }
 }
