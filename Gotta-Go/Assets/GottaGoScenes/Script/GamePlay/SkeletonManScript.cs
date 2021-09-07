@@ -27,11 +27,11 @@ public class SkeletonManScript : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (transform.playerDirection.x > speedMiltestoneCount)
-        {
-            speedMiltestoneCount += speedIncreaseMilestone;
-            playerSpeed = playerSpeed + speedMultiplier;
-        }
-        rb.velocity = new Vector2(0, playerDirection.y * playerSpeed);
+        //if (transform.playerDirection.x > speedMiltestoneCount)
+        //{
+            //speedMiltestoneCount += speedIncreaseMilestone;
+            //playerSpeed = playerSpeed + speedMultiplier;
+        //}
+        //rb.velocity = new Vector2(0, playerDirection.y * playerSpeed);
     }
 }
