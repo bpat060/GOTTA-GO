@@ -22,7 +22,7 @@ public class Spawner : MonoBehaviour
         if(rightMost.transform.position.x <= spawnPosX)
         {
             Vector2 pos = this.transform.position;
-            rightMost = Instantiate(maps[0], new Vector2(pos.x, pos.y + Random.Range(-1, 1)), Quaternion.identity, grid.transform);
+            rightMost = Instantiate(maps[0], new Vector2(pos.x, pos.y + Random.Range(1, 3)), Quaternion.identity, grid.transform);
         }
     }
 }
