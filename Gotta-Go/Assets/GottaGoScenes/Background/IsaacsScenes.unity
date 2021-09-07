@@ -415,7 +415,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maps:
-  - {fileID: 1003693015}
+  - {fileID: 1863506182}
   spawnPosX: 0
 --- !u!1 &1003693015 stripped
 GameObject:
@@ -441,7 +441,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 247d3ee772f30014daaabf086ebd84fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: -3
+  speed: -5
 --- !u!19719996 &1003693021
 TilemapCollider2D:
   m_ObjectHideFlags: 0
@@ -571,7 +571,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maps:
-  - {fileID: 1003693015}
+  - {fileID: 1863506182}
   spawnPosX: 0
 --- !u!1 &1175062212
 GameObject:
@@ -907,7 +907,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 247d3ee772f30014daaabf086ebd84fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: -3
+  speed: -5
 --- !u!19719996 &1863506188
 TilemapCollider2D:
   m_ObjectHideFlags: 0
