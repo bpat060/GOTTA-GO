@@ -9,12 +9,6 @@ EditorBuildSettings:
     path: Assets/GottaGoScenes/Menu/Menu.unity
     guid: e091ea667c0df23478262c7dd8b90bf8
   - enabled: 1
-    path: Assets/GottaGoScenes/Menu/PlayDummyForCode.unity
-    guid: a0bd8fe2aa051844897f7d9a44c90775
-  - enabled: 1
-    path: Assets/GottaGoScenes/Menu/TutorialDummyForCode.unity
-    guid: 3c54c5d886ab1d74fb9541c9acb0ffe9
-  - enabled: 0
-    path: Assets/Demo Unity Files/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/GottaGoScenes/Scenes/GamePlayScene.unity
+    guid: a7bec9437bdd2124eadb55d5461666d7
   m_configObjects: {}
