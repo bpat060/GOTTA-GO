@@ -32,6 +32,6 @@ public class SkeletonManScript : MonoBehaviour
             //speedMiltestoneCount += speedIncreaseMilestone;
             //playerSpeed = playerSpeed + speedMultiplier;
         //}
-        //rb.velocity = new Vector2(0, playerDirection.y * playerSpeed);
+        rb.velocity = new Vector2(0, playerDirection.y * playerSpeed);
     }
 }

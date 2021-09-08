@@ -7,6 +7,7 @@ public class MapController : MonoBehaviour
     Rigidbody2D rb;
     public float speed;
     GameObject leftMost;
+
     // Start is called before the first frame update
     void Start()
     {

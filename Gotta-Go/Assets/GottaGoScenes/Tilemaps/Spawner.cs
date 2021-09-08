@@ -7,13 +7,11 @@ public class Spawner : MonoBehaviour
     public GameObject[] maps;
     GameObject rightMost;
     public float spawnPosX;
-    GameObject grid;
     
     // Start is called before the first frame update
     void Start()
     {
-        rightMost = GameObject.Find("TilemapTwo");
-        grid = GameObject.Find("Grid");
+        rightMost = GameObject.Find("PlatformThree");
     }
 
     // Update is called once per frame
@@ -21,8 +19,7 @@ public class Spawner : MonoBehaviour
     {
         if(rightMost.transform.position.x <= spawnPosX)
         {
-            Vector2 pos = this.transform.position;
-            rightMost = Instantiate(maps[0], new Vector2(pos.x, pos.y + Random.Range(1, 3)), Quaternion.identity, grid.transform);
+            rightMost = Instantiate(maps[0], this.transform.position, Quaternion.identity);
         }
     }
 }
