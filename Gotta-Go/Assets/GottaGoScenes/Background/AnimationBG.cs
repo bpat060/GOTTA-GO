@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AnimationBG : MonoBehaviour
 {
-    Material material;
+     Material material;
     public Vector2 speed;
     Vector2 movement;
 
@@ -17,7 +17,7 @@ public class AnimationBG : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        movement += speed * Time.deltaTime;
+        movement += new Vector2(Speed_Controller.bg_speed,0) * Time.deltaTime;
         material.mainTextureOffset = movement;
     }
 }
