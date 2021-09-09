@@ -10,5 +10,5 @@ EditorBuildSettings:
     guid: e091ea667c0df23478262c7dd8b90bf8
   - enabled: 1
     path: Assets/GottaGoScenes/Scenes/GamePlayScene.unity
-    guid: a7bec9437bdd2124eadb55d5461666d7
+    guid: a6981d453e2e5ea4f90f7f7210be336e
   m_configObjects: {}
