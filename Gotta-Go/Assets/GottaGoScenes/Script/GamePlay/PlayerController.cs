@@ -21,6 +21,8 @@ public class PlayerController : MonoBehaviour
     public bool isOnGround;
     public static bool hasShield = false;
 
+    public GameManager1 gameManager1;
+
 
     // Start is called before the first frame update
     void Start()
@@ -61,7 +63,7 @@ public class PlayerController : MonoBehaviour
     {
         if(collision.CompareTag("Obstacle") && !hasShield)
         {
-            Dead();
+            gameManager1.RestartGame();
         }
 
         if(collision.CompareTag("MiniPower"))
@@ -71,9 +73,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void Dead() 
-    {
-        Destroy(this.gameObject);
-    }
+  //  void Dead() 
+  //  {
+  //      Destroy(this.gameObject);
+  //  }
 
 }
