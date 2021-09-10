@@ -5,7 +5,7 @@ using UnityEngine;
 public class Speed_Controller : MonoBehaviour
 {
     public static float map_speed = -2f;
-    public static float bg_speed = 1;
+    public static float bg_speed = 0.2f;
     private float timeCounter = 0;
     private static float accelerateCounter = 0;
     private static bool isAcc = false;
