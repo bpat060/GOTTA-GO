@@ -28,7 +28,7 @@ public class Spawner : MonoBehaviour
             rightMost = Instantiate(maps[0], this.transform.position, 
             Quaternion.identity);
 
-            if(Random.Range(0,4) == 0)
+            if(Random.Range(0,6) == 0)
             {
                 SpawnMiniPower();
             }
