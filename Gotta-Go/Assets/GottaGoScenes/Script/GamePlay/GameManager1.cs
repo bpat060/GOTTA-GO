@@ -18,6 +18,7 @@ public class GameManager1 : MonoBehaviour
     {
         playerStartPoint = spawner.position;
         playerStartPoint = thePlayer.transform.position;
+        
     }
 
     // Update is called once per frame
