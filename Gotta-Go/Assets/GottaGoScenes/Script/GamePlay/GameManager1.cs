@@ -8,7 +8,9 @@ public class GameManager1 : MonoBehaviour
     private Vector2 spawnerStartPoint;
 
     public PlayerController thePlayer;
-    private Vector2 playerStartPoint; 
+    private Vector2 playerStartPoint;
+
+    private MapController[] spawnerList;
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +34,11 @@ public class GameManager1 : MonoBehaviour
     {
         thePlayer.gameObject.SetActive(false);
         yield return new WaitForSeconds(0.5f);
+        spawnerList = FindObjectsOfType<MapController>();
+        for(int i=0; 1 < spawnerList.Length; i++)
+        {
+            spawnerList[i].gameObject.SetActive(false);
+        }
         thePlayer.transform.position = playerStartPoint;
         spawner.position = spawnerStartPoint;
         thePlayer.gameObject.SetActive(true);
