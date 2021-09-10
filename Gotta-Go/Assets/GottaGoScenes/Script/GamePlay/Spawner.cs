@@ -42,7 +42,7 @@ public class Spawner : MonoBehaviour
     void SpawnObstacle()
     {
         Instantiate(obstacles[Random.Range(0,obstacles.Length)],
-            new Vector2(Random.Range(1,4) + rightMost.transform.position.x, 0.95f + rightMost.transform.position.y),
+            new Vector2(Random.Range(1,4) + rightMost.transform.position.x, 1.0f + rightMost.transform.position.y),
             Quaternion.identity, rightMost.transform);
     }
 
