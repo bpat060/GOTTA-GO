@@ -56,6 +56,16 @@ public class PlayerController : MonoBehaviour
             anim.SetBool("isDodge", false);
         }
 
+        void jump()
+        {
+            rb.velocity += new Vector2(0, jumpSpeed);
+        }
+
+        void dodge()
+        {
+            anim.SetBool("isDodge", true);
+        }
+
     }
 
 
