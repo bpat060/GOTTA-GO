@@ -924,13 +924,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1ba6d9a9fae552429a22f72f5864f15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpSpeed: 9
+  jumpSpeed: 0.5
   checkPoint: {fileID: 256999413}
   checkRadius: 0.5
   groundMask:
     serializedVersion: 2
     m_Bits: 64
   isOnGround: 0
+  isOnJump: 0
   gameManager1: {fileID: 731044219}
 --- !u!61 &992648669
 BoxCollider2D:
@@ -1425,7 +1426,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1342729704}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 992648668}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: Jump
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1342729704
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1825,7 +1838,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1568278764}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 992648668}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: Jump
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1568278764
 MonoBehaviour:
   m_ObjectHideFlags: 0
