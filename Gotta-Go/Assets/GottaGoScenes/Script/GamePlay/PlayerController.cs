@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -57,16 +56,6 @@ public class PlayerController : MonoBehaviour
             anim.SetBool("isDodge", false);
         }
 
-        void jump()
-        {
-            rb.velocity += new Vector2(0, jumpSpeed);
-        }
-
-        void dodge()
-        {
-            anim.SetBool("isDodge", true);
-        }
-
     }
 
 
@@ -75,7 +64,6 @@ public class PlayerController : MonoBehaviour
         if(collision.CompareTag("Obstacle") && !hasShield)
         {
             gameManager1.RestartGame();
-            SceneManager.LoadScene(2);
         }
 
         if(collision.CompareTag("MiniPower"))
