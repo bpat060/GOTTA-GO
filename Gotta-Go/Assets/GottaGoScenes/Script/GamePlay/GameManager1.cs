@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager1 : MonoBehaviour
 {
@@ -17,12 +18,13 @@ public class GameManager1 : MonoBehaviour
     {
         playerStartPoint = spawner.position;
         playerStartPoint = thePlayer.transform.position;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
     public void RestartGame()
