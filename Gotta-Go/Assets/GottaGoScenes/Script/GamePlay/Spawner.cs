@@ -42,7 +42,7 @@ public class Spawner : MonoBehaviour
     void SpawnObstacle()
     {
         Instantiate(obstacles[Random.Range(0,obstacles.Length)],
-            new Vector2(Random.Range(1,4) + rightMost.transform.position.x, 1.0f + rightMost.transform.position.y),
+            new Vector2(Random.Range(1,4) + rightMost.transform.position.x, 2.0f + rightMost.transform.position.y),
             Quaternion.identity, rightMost.transform);
     }
 
@@ -50,10 +50,10 @@ public class Spawner : MonoBehaviour
     {
         float offsetX = Random.Range(1,4);
         Instantiate(minipowers[Random.Range(0,minipowers.Length)],
-            new Vector2(Random.Range(1,4) + rightMost.transform.position.x, 3.0f + rightMost.transform.position.y),
+            new Vector2(Random.Range(1,2) + rightMost.transform.position.x, 4.0f + rightMost.transform.position.y),
             Quaternion.identity, rightMost.transform);
 
-        Instantiate(platform, new Vector2(offsetX + rightMost.transform.position.x, 2.663252f + rightMost.transform.position.y),
+        Instantiate(platform, new Vector2(offsetX + rightMost.transform.position.x, 3.663252f + rightMost.transform.position.y),
             Quaternion.identity, rightMost.transform);
     }
 }

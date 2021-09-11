@@ -10,16 +10,19 @@ public class PlayerController : MonoBehaviour
     Animator anim;
 
     //Dodge - change the BoxCollider2D
-    //private BoxCollider2D box;
-    //private float originalOffsetY = -0.0545001f;
-    //private float originalSizeY = 1.163999f;
-    //private float dodgeTime = 0;
+    private BoxCollider2D box;
+    private float originalOffsetY = -0.0545001f;
+    private float originalSizeY = 1.163999f;
+
+    private float dodgeTime = 0;
+    private float JumpTime = 0;
 
     public Transform checkPoint;
     public float checkRadius;
     public LayerMask groundMask;
 
     public bool isOnGround;
+    public bool isOnJump = false;
     public static bool hasShield = false;
 
     public GameManager1 gameManager1;
@@ -30,6 +33,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        box = GetComponent<BoxCollider2D>();
     }
 
     // Update is called once per frame
@@ -39,35 +43,76 @@ public class PlayerController : MonoBehaviour
         anim.SetBool("isOnGround", isOnGround);
         rb.freezeRotation = true;
 
-        if (Input.GetKeyDown(KeyCode.Space) && isOnGround && !Input.GetKeyDown(KeyCode.Z))
+        /*if (Input.GetKeyDown(KeyCode.Space) && isOnGround && !Input.GetKeyDown(KeyCode.Z))
         {
             rb.velocity += new Vector2(0, jumpSpeed);
+        }*/
+
+        if(JumpTime > 0 && isOnGround)
+        {
+            rb.velocity += new Vector2(0, jumpSpeed);
+            isOnJump = true;
+        }
+        else if(JumpTime <= 0 && !isOnGround)
+        {
+            isOnJump = false;
         }
 
-        if(Input.GetKeyDown(KeyCode.Z) && isOnGround && !Input.GetKeyDown(KeyCode.Space))
+        /*if(Input.GetKeyDown(KeyCode.Z) && isOnGround && !Input.GetKeyDown(KeyCode.Space))
         {
-            //box.offset = new Vector2(box.offset.x, -0.4f);
-            //box.size = new Vector2(box.size.x, 0.5f);
+            box.offset = new Vector2(box.offset.x, -0.4f);
+            box.size = new Vector2(box.size.x, 0.5f);
             anim.SetBool("isDodge", true);
         }
         else if(Input.GetKeyUp(KeyCode.Z))
         {
-            //box.offset = new Vector2(box.offset.x, originalOffsetY);
-            //box.size = new Vector2(box.size.x, originalSizeY);
+            box.offset = new Vector2(box.offset.x, originalOffsetY);
+            box.size = new Vector2(box.size.x, originalSizeY);
             anim.SetBool("isDodge", false);
-        }
+        }*/
 
-        void jump()
+        if(dodgeTime > 0 && isOnGround)
         {
-            rb.velocity += new Vector2(0, jumpSpeed);
-        }
-
-        void dodge()
-        {
+            box.offset = new Vector2(box.offset.x, -0.4f);
+            box.size = new Vector2(box.size.x, 0.5f);
             anim.SetBool("isDodge", true);
         }
+        else if(dodgeTime <= 0 || !isOnGround)
+        {
+            box.offset = new Vector2(box.offset.x, originalOffsetY);
+            box.size = new Vector2(box.size.x, originalSizeY);
+            anim.SetBool("isDodge", false);
+            dodgeTime = 0;
+        }
 
+        
     }
+
+    private void FixedUpdate() 
+    {
+        if(dodgeTime > 0)
+        {
+            dodgeTime -= Time.deltaTime;
+        }
+        if(JumpTime > 0)
+        {
+            JumpTime -= Time.deltaTime;
+        }
+    }
+
+    public void jump()
+    {
+        //rb.velocity += new Vector2(0, jumpSpeed);
+        //isOnJump = true;
+        JumpTime = 0.5f;
+    }
+
+    public void dodge()
+    {
+        anim.SetBool("isDodge", true);
+        dodgeTime = 0.5f;
+    }
+
 
 
     private void OnTriggerEnter2D(Collider2D collision) 
