@@ -802,8 +802,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   popUps:
-  - {fileID: 983877407}
-  spawn: {fileID: 1593785350}
+  - {fileID: 110733300412068982, guid: c6574a7a64a22834ca6e91f56b4c79b8, type: 3}
+  spawn: {fileID: 5224663106958748637, guid: 61d41e3946bb34447abfea340be7dec0, type: 3}
   waitTime: 1
 --- !u!4 &954568391
 Transform:
@@ -819,12 +819,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &983877407 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5224663106787395754, guid: 61d41e3946bb34447abfea340be7dec0,
-    type: 3}
-  m_PrefabInstance: {fileID: 5224663107699347381}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &992648667
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,8 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class TutorialManager : MonoBehaviour
 {
+
+
     public GameObject[] popUps;
     private int popUpIndex;
     public GameObject spawn;
@@ -49,4 +52,6 @@ public class TutorialManager : MonoBehaviour
             }
         }
     }
+
+   
 }
