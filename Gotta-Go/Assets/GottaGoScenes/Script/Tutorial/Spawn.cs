@@ -5,55 +5,55 @@ using Random = UnityEngine.Random;
 
 public class Spawn : MonoBehaviour
 {
-    public GameObject[] maps;
-    public GameObject[] obstacles;
-    public GameObject[] minipowers;
-    public GameObject platform;
+    public GameObject[] Tmaps;
+    public GameObject[] Tobstacles;
+    public GameObject[] Tminipowers;
+    public GameObject Tplatform;
 
 
-    GameObject rightMost;
-    public float spawnPosX;
+    GameObject TrightMost;
+    public float TspawnPosX;
 
     // Start is called before the first frame update
     void Start()
     {
-        rightMost = GameObject.Find("GroundOne");
+        TrightMost = GameObject.Find("TGroundOne");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (rightMost.transform.position.x <= spawnPosX)
+        if (TrightMost.transform.position.x <= TspawnPosX)
         {
-            rightMost = Instantiate(maps[0], this.transform.position,
+            TrightMost = Instantiate(Tmaps[0], this.transform.position,
             Quaternion.identity);
 
             if (Random.Range(0, 10) == 0)
             {
-                SpawnMiniPower();
+                TSpawnMiniPower();
             }
             else
             {
-                SpawnObstacle();
+                TSpawnObstacle();
             }
         }
     }
 
-    void SpawnObstacle()
+    void TSpawnObstacle()
     {
-        Instantiate(obstacles[Random.Range(0, obstacles.Length)],
-            new Vector2(Random.Range(1, 4) + rightMost.transform.position.x, 2.0f + rightMost.transform.position.y),
-            Quaternion.identity, rightMost.transform);
+        Instantiate(Tobstacles[Random.Range(0, Tobstacles.Length)],
+            new Vector2(Random.Range(1, 4) + TrightMost.transform.position.x, 2.0f + TrightMost.transform.position.y),
+            Quaternion.identity, TrightMost.transform);
     }
 
-    void SpawnMiniPower()
+    void TSpawnMiniPower()
     {
         float offsetX = Random.Range(1, 4);
-        Instantiate(minipowers[Random.Range(0, minipowers.Length)],
-            new Vector2(Random.Range(1, 2) + rightMost.transform.position.x, 4.0f + rightMost.transform.position.y),
-            Quaternion.identity, rightMost.transform);
+        Instantiate(Tminipowers[Random.Range(0, Tminipowers.Length)],
+            new Vector2(Random.Range(1, 2) + TrightMost.transform.position.x, 4.0f + TrightMost.transform.position.y),
+            Quaternion.identity, TrightMost.transform);
 
-        Instantiate(platform, new Vector2(offsetX + rightMost.transform.position.x, 3.663252f + rightMost.transform.position.y),
-            Quaternion.identity, rightMost.transform);
+        Instantiate(Tplatform, new Vector2(offsetX + TrightMost.transform.position.x, 3.663252f + TrightMost.transform.position.y),
+            Quaternion.identity, TrightMost.transform);
     }
 }

@@ -6,7 +6,7 @@ public class TutorialManager : MonoBehaviour
 {
     public GameObject[] popUps;
     private int popUpIndex;
-    public GameObject spawner;
+    public GameObject spawn;
     public float waitTime = 2f;
     
     void Update()
@@ -19,7 +19,8 @@ public class TutorialManager : MonoBehaviour
             }
             else
             {
-                popUps[popUpIndex].SetActive(false);            }
+                popUps[popUpIndex].SetActive(false);            
+            }
         }
 
         if(popUpIndex == 0)
@@ -40,7 +41,7 @@ public class TutorialManager : MonoBehaviour
         {
             if(waitTime <= 0)
             {
-                spawner.SetActive(true);
+                spawn.SetActive(true);
             }
             else
             {
