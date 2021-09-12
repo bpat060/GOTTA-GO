@@ -117,7 +117,7 @@ public class Player : MonoBehaviour
 
         if (collision.CompareTag("MiniPower"))
         {
-            Speed_Controller.Accelerate();
+            Speed.Accelerate();
             Destroy(collision.gameObject);
         }
     }

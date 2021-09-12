@@ -644,7 +644,7 @@ MonoBehaviour:
   popUps:
   - {fileID: 0}
   - {fileID: 0}
-  spawner: {fileID: 729679527}
+  spawner: {fileID: 1593785350}
   waitTime: 2
 --- !u!4 &954568391
 Transform:
@@ -673,7 +673,7 @@ GameObject:
   - component: {fileID: 992648670}
   - component: {fileID: 992648669}
   - component: {fileID: 992648673}
-  - component: {fileID: 992648674}
+  - component: {fileID: 992648668}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -681,6 +681,26 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &992648668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 992648667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67c8394c16232d5419b15acda745df91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpSpeed: 0.5
+  checkPoint: {fileID: 256999413}
+  checkRadius: 0.5
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 64
+  isOnGround: 0
+  isOnJump: 0
 --- !u!61 &992648669
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -814,27 +834,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &992648674
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 992648667}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1ba6d9a9fae552429a22f72f5864f15, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jumpSpeed: 0.5
-  checkPoint: {fileID: 256999413}
-  checkRadius: 0.5
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 64
-  isOnGround: 0
-  isOnJump: 0
-  gameManager1: {fileID: 0}
 --- !u!1 &1060552332
 GameObject:
   m_ObjectHideFlags: 0
@@ -984,8 +983,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+      - m_Target: {fileID: 992648668}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
         m_MethodName: Jump
         m_Mode: 1
         m_Arguments:
@@ -1251,9 +1250,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: Jump
+      - m_Target: {fileID: 992648668}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: Dodge
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1388,7 +1387,7 @@ AudioSource:
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
-  Mute: 0
+  Mute: 1
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
