@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D rb;
     Animator anim;
 
+
     //Dodge - change the BoxCollider2D
     private BoxCollider2D box;
     private float originalOffsetY = -0.0545001f;
@@ -33,6 +34,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         box = GetComponent<BoxCollider2D>();
+
     }
 
     // Update is called once per frame
