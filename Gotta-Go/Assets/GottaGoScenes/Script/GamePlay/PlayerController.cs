@@ -40,6 +40,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //freez the Rotation, and set boolean for Jump and Dodge function and animator
         isOnGround = Physics2D.OverlapCircle(checkPoint.position, checkRadius, groundMask);
         anim.SetBool("isOnGround", isOnGround);
         rb.freezeRotation = true;
@@ -72,12 +73,14 @@ public class PlayerController : MonoBehaviour
             isOnJump = true;
         }
         
+        //when click dodge button down, play the dodge animation and change the box Collider
         if(dodgeTime > 0 && isOnGround)
         {
             box.offset = new Vector2(box.offset.x, -0.4f);
             box.size = new Vector2(box.size.x, 0.5f);
             anim.SetBool("isDodge", true);
         }
+        //when dodge button up, change the box Collider to normal
         else if(dodgeTime <= 0 || !isOnGround)
         {
             box.offset = new Vector2(box.offset.x, originalOffsetY);

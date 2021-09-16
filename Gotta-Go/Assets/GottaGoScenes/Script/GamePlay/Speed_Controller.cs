@@ -9,7 +9,6 @@ public class Speed_Controller : MonoBehaviour
     private float timeCounter = 0;
     private static float accelerateCounter = 0;
     
-    //private static bool isAcc = false;
 
     //MAX SPEED
     const float MAX_MAP_SPEED = -4f;
@@ -30,21 +29,14 @@ public class Speed_Controller : MonoBehaviour
 
     private void FixedUpdate() 
     {
+        //Player's speed increase according to Time
         timeCounter += Time.deltaTime;
         if(accelerateCounter > 0)
         {
             accelerateCounter -= Time.deltaTime;
         }
 
-        /*if(accelerateCounter <= 0 && isAcc)
-        {
-            map_speed /= 2;
-            bg_speed /= 2;
-            accelerateCounter = 0;
-            isAcc = false;
-            
-        }*/
-
+        //Player's speed return to current speed when Rush Minipower time up
         if(accelerateCounter <= 0)
         {
             map_speed = map_system_speed;
@@ -65,6 +57,8 @@ public class Speed_Controller : MonoBehaviour
 
     public static void Accelerate()
     {
+        //when player get minipower, increase the current speed to Rush speed 
+        //and status change to "hasShield", not gonna be destroied when touch obstacles
         accelerateCounter = 5;
         map_speed = map_rush_speed;
         bg_speed = bg_rush_speed;

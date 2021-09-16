@@ -19,6 +19,7 @@ public class MapController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //to destroied the Game Objects Clone at Leftbound 
         if(this.transform.position.x <= leftMost.transform.position.x)
         {
             Destroy(this.gameObject);

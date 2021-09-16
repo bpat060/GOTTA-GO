@@ -16,6 +16,7 @@ public class Asteroid : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //let the Asteroid obstacle can move up and down
         restTime += Time.deltaTime;
         if(restTime <= 1.5)
         {

@@ -17,6 +17,7 @@ public class AnimationBG : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //to increase/control the background animation speed, linked with Speed_Controller
         movement += new Vector2(Speed_Controller.bg_speed,0) * Time.deltaTime;
         material.mainTextureOffset = movement;
     }
