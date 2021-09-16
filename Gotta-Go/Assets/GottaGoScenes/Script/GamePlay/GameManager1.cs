@@ -31,6 +31,7 @@ public class GameManager1 : MonoBehaviour
     //method for restarting game when dead.
     public void RestartGame()
     {
+        SceneManager.LoadScene(2);
         StartCoroutine("RestartGameCo");
     }
 
