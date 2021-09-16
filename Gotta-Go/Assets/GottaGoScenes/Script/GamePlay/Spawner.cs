@@ -5,6 +5,7 @@ using Random = UnityEngine.Random;
 
 public class Spawner : MonoBehaviour
 {
+    //variables for the spawner
     public GameObject[] maps;
     public GameObject[] obstacles;
     public GameObject[] minipowers;
@@ -31,7 +32,7 @@ public class Spawner : MonoBehaviour
 
 
             //to Control the Random Range of Game Object
-            //For examplee, if Random.Range(0.4) that means, 1/4(25%) will spawn Minipower, and 3/4(75%) will spawn Obstacles
+            //For example, if Random.Range(0.4) that means, 1/4(25%) will spawn Minipower, and 3/4(75%) will spawn Obstacles
             if(Random.Range(0,8) == 0)
             {
                 SpawnMiniPower();
@@ -45,7 +46,7 @@ public class Spawner : MonoBehaviour
 
     void SpawnObstacle()
     {
-        //to control the Position of the spawn Random Obstacles
+        //to control the Position of the Random Obstacles spawning
         Instantiate(obstacles[Random.Range(0,obstacles.Length)],
             new Vector2(Random.Range(1,4) + rightMost.transform.position.x, 2.0f + rightMost.transform.position.y),
             Quaternion.identity, rightMost.transform);
@@ -53,7 +54,7 @@ public class Spawner : MonoBehaviour
 
     void SpawnMiniPower()
     {
-        //to control the Position of Minipower and Platform
+        //to control the Position of Minipowers and Platforms spawning
         float offsetX = Random.Range(1,4);
         Instantiate(minipowers[Random.Range(0,minipowers.Length)],
             new Vector2(Random.Range(1,2) + rightMost.transform.position.x, 4.0f + rightMost.transform.position.y),

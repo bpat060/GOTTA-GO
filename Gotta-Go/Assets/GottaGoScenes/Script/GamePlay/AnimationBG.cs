@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AnimationBG : MonoBehaviour
 {
+    //variable for the Animation class
     Material material;
     public Vector2 speed;
     Vector2 movement;

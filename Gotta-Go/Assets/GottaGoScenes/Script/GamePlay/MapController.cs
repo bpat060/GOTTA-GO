@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MapController : MonoBehaviour
 {
+    //variables needed for the map controller, controlls how the screen of the players device looks. 
     Rigidbody2D rb;
     GameObject leftMost;
 
@@ -11,6 +12,7 @@ public class MapController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //setting variables
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = new Vector2(Speed_Controller.map_speed, 0);
         leftMost = GameObject.Find("LeftBound");
@@ -19,7 +21,7 @@ public class MapController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //to destroied the Game Objects Clone at Leftbound 
+        //destroys the Game Objects and Clones at Leftbound from the spawner
         if(this.transform.position.x <= leftMost.transform.position.x)
         {
             Destroy(this.gameObject);
@@ -28,6 +30,7 @@ public class MapController : MonoBehaviour
 
     private void FixedUpdate() 
     {
+        //updating the speed of the rigid body
         rb.velocity = new Vector2(Speed_Controller.map_speed,0);
     }
 }

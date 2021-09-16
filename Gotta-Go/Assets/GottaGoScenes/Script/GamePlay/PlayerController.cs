@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    //varaibles of the player class
     public float jumpSpeed;
     Rigidbody2D rb;
     Animator anim;
@@ -31,6 +32,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //setting the rigid body, player animation and collider components
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         box = GetComponent<BoxCollider2D>();
@@ -40,7 +42,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //freez the Rotation, and set boolean for Jump and Dodge function and animator
+        //freezes the Rotation, and sets the boolean for Jump and Dodge function and animator
         isOnGround = Physics2D.OverlapCircle(checkPoint.position, checkRadius, groundMask);
         anim.SetBool("isOnGround", isOnGround);
         rb.freezeRotation = true;
@@ -73,14 +75,14 @@ public class PlayerController : MonoBehaviour
             isOnJump = true;
         }
         
-        //when click dodge button down, play the dodge animation and change the box Collider
+        //when the dodge button is clicked, this method plays the dodge animation and changes the box collider.
         if(dodgeTime > 0 && isOnGround)
         {
             box.offset = new Vector2(box.offset.x, -0.4f);
             box.size = new Vector2(box.size.x, 0.5f);
             anim.SetBool("isDodge", true);
         }
-        //when dodge button up, change the box Collider to normal
+        //when dodge clicked while player is in the air this method changes the box Collider to normal
         else if(dodgeTime <= 0 || !isOnGround)
         {
             box.offset = new Vector2(box.offset.x, originalOffsetY);
@@ -93,6 +95,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate() 
     {
+        //time updates when the player dodges or jumps everytime
         if(dodgeTime > 0)
         {
             dodgeTime -= Time.deltaTime;
@@ -105,28 +108,33 @@ public class PlayerController : MonoBehaviour
 
     public void Jump()
     {
+        //setting the jumptime and boolean. 
         jumpTime = 0.5f;
         isOnJump = false;
     }
 
     public void Dodge()
     {
+        //setting the dodge time
         dodgeTime = 0.5f;
     }
 
-
+    //function for when the player collides with another object
     private void OnTriggerEnter2D(Collider2D collision) 
     {
         if(collision.CompareTag("Obstacle") && !hasShield)
         {
+            //if collision with an obstacle, player dies and game restarts
             gameManager1.RestartGame();
         }
 
         if(collision.CompareTag("MiniPower"))
         {
+            //if collision with a power up, player speed increases and is temporary invincible to obstacle collisions
             Speed_Controller.Accelerate();
             Destroy(collision.gameObject);
         }
+        //collision with the platform is not needed as it does not do anything anyways.
     }
 
   //  void Dead() 
