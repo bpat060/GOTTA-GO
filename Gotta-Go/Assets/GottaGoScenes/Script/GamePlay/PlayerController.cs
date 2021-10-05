@@ -5,27 +5,31 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     //varaibles of the player class
-    public float jumpSpeed;
+    public float jumpHeight;
     Rigidbody2D rb;
     Animator anim;
 
-
     //Dodge - change the BoxCollider2D
+    //change player Size to half of that dodge obstacles
     private BoxCollider2D box;
     private float originalOffsetY = -0.0545001f;
     private float originalSizeY = 1.163999f;
 
+    //set Time in between jump and dodge
     private float dodgeTime = 0;
     private float jumpTime = 0;
 
+    //set for check point
     public Transform checkPoint;
     public float checkRadius;
     public LayerMask groundMask;
 
+    //Player status: is on ground/jump/hasShield or not
     public bool isOnGround;
     public bool isOnJump = false;
     public static bool hasShield = false;
 
+    //link to GameManager1
     public GameManager1 gameManager1;
 
 
@@ -47,9 +51,10 @@ public class PlayerController : MonoBehaviour
         anim.SetBool("isOnGround", isOnGround);
         rb.freezeRotation = true;
 
+        //Desktop Player Controls
         /*if (Input.GetKeyDown(KeyCode.Space) && isOnGround && !Input.GetKeyDown(KeyCode.Z))
         {
-            rb.velocity += new Vector2(0, jumpSpeed);
+            rb.velocity += new Vector2(0, jumpHeight);
         }
 
         if(Input.GetKeyDown(KeyCode.Z) && isOnGround && !Input.GetKeyDown(KeyCode.Space))
@@ -65,9 +70,10 @@ public class PlayerController : MonoBehaviour
             anim.SetBool("isDodge", false);
         }*/
 
+        //when the jump button is clicked, this method plays the jump animation.
         if(jumpTime > 0 && isOnGround)
         {
-            rb.velocity += new Vector2(0, jumpSpeed);
+            rb.velocity += new Vector2(0, jumpHeight);
             isOnJump = false;
         }
         else if(jumpTime <= 0 && !isOnGround)
@@ -136,10 +142,5 @@ public class PlayerController : MonoBehaviour
         }
         //collision with the platform is not needed as it does not do anything anyways.
     }
-
-  //  void Dead() 
-  //  {
-  //      Destroy(this.gameObject);
-  //  }
 
 }
