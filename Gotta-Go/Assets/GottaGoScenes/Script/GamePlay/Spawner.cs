@@ -55,7 +55,7 @@ public class Spawner : MonoBehaviour
     void SpawnMiniPower()
     {
         //to control the Position of Minipowers and Platforms spawning
-        float offsetX = Random.Range(1,4);
+        float offsetX = 1;//Random.Range(1,2);
         Instantiate(minipowers[Random.Range(0,minipowers.Length)],
             new Vector2(Random.Range(1,2) + rightMost.transform.position.x, 4.0f + rightMost.transform.position.y),
             Quaternion.identity, rightMost.transform);

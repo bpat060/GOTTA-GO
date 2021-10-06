@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -32,6 +33,12 @@ public class PlayerController : MonoBehaviour
     //link to GameManager1
     public GameManager1 gameManager1;
 
+    //Score System
+    private int totalScore;
+    private int surviveScore = 1;
+    private Text scoreText;
+    private float surviveTime;
+    private int scorenerScore = 10;
 
     // Start is called before the first frame update
     void Start()
@@ -40,7 +47,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         box = GetComponent<BoxCollider2D>();
-
+        scoreText = GameObject.Find("Score").GetComponent<Text>();
     }
 
     // Update is called once per frame
@@ -51,6 +58,11 @@ public class PlayerController : MonoBehaviour
         anim.SetBool("isOnGround", isOnGround);
         rb.freezeRotation = true;
 
+        scoreText.text = totalScore.ToString();
+    }
+
+    private void FixedUpdate() 
+    {
         //Desktop Player Controls
         /*if (Input.GetKeyDown(KeyCode.Space) && isOnGround && !Input.GetKeyDown(KeyCode.Z))
         {
@@ -69,16 +81,16 @@ public class PlayerController : MonoBehaviour
             box.size = new Vector2(box.size.x, originalSizeY);
             anim.SetBool("isDodge", false);
         }*/
-
+        
         //when the jump button is clicked, this method plays the jump animation.
         if(jumpTime > 0 && isOnGround)
         {
             rb.velocity += new Vector2(0, jumpHeight);
-            isOnJump = false;
+            isOnJump = true;
         }
         else if(jumpTime <= 0 && !isOnGround)
         {
-            isOnJump = true;
+            isOnJump = false;
         }
         
         //when the dodge button is clicked, this method plays the dodge animation and changes the box collider.
@@ -96,11 +108,7 @@ public class PlayerController : MonoBehaviour
             anim.SetBool("isDodge", false);
             dodgeTime = 0;
         }
-
-    }
-
-    private void FixedUpdate() 
-    {
+        
         //time updates when the player dodges or jumps everytime
         if(dodgeTime > 0)
         {
@@ -110,6 +118,14 @@ public class PlayerController : MonoBehaviour
         {
             jumpTime -= Time.deltaTime;
         }
+
+        surviveTime += Time.deltaTime;
+        if(surviveTime > 1)
+        {
+            totalScore += surviveScore;
+            surviveTime = 0;
+        }
+
     }
 
     public void Jump()
@@ -141,6 +157,13 @@ public class PlayerController : MonoBehaviour
             Destroy(collision.gameObject);
         }
         //collision with the platform is not needed as it does not do anything anyways.
+
+        if(collision.CompareTag("Scorener"))
+        {
+
+            totalScore += scorenerScore;
+            Destroy(collision.gameObject);
+        }
     }
 
 }
