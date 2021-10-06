@@ -35,9 +35,11 @@ public class PlayerController : MonoBehaviour
 
     //Score System
     private int totalScore;
+    //Player get 1 point per second
     private int surviveScore = 1;
     private Text scoreText;
     private float surviveTime;
+    //Player get 10 points when Player get the Cherry
     private int scorenerScore = 10;
 
     // Start is called before the first frame update
@@ -160,7 +162,7 @@ public class PlayerController : MonoBehaviour
 
         if(collision.CompareTag("Scorener"))
         {
-
+            //if collision with a Cherry, player total score +10
             totalScore += scorenerScore;
             Destroy(collision.gameObject);
         }
