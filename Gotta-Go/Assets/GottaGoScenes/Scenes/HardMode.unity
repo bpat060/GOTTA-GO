@@ -1856,7 +1856,6 @@ MonoBehaviour:
   - {fileID: 4295962806426308899, guid: 8d37107aae0f9834b85f0d406aa9331e, type: 3}
   - {fileID: 1678059673172592069, guid: 7a6f13c680cb41343834da2c26f6c787, type: 3}
   minipowers:
-  - {fileID: 5002817235517596118, guid: d021c489fa32a1b419ce8df52a15531f, type: 3}
   - {fileID: 3343491382522428509, guid: 57c40ae5aa40af144a9a4d456c62d21e, type: 3}
   platform: {fileID: 7824984624482263776, guid: 354c217ffb716584c99702ec8a2d765f,
     type: 3}
