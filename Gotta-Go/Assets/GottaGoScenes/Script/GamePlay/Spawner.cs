@@ -48,7 +48,7 @@ public class Spawner : MonoBehaviour
     {
         //to control the Position of the Random Obstacles spawning
         Instantiate(obstacles[Random.Range(0,obstacles.Length)],
-            new Vector2(Random.Range(1,4) + rightMost.transform.position.x, 2.0f + rightMost.transform.position.y),
+            new Vector2(Random.Range(1,4) + rightMost.transform.position.x, 1.5f + rightMost.transform.position.y),
             Quaternion.identity, rightMost.transform);
     }
 

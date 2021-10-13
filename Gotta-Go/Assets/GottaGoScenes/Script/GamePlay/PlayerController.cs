@@ -66,22 +66,29 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate() 
     {
         //Desktop Player Controls
-        /*if (Input.GetKeyDown(KeyCode.Space) && isOnGround && !Input.GetKeyDown(KeyCode.Z))
+        /*if (Input.GetKeyDown(KeyCode.Space) && isOnGround && !Input.GetKeyDown(KeyCode.Z) && jumpTime > 0)
         {
             rb.velocity += new Vector2(0, jumpHeight);
+            isOnJump = true;
         }
 
-        if(Input.GetKeyDown(KeyCode.Z) && isOnGround && !Input.GetKeyDown(KeyCode.Space))
+        if(!isOnGround && jumpTime < 0)
+        {
+            isOnJump = false;
+        }
+
+        if(Input.GetKeyDown(KeyCode.Z) && isOnGround && !Input.GetKeyDown(KeyCode.Space) && dodgeTime > 0)
         {
             box.offset = new Vector2(box.offset.x, -0.4f);
             box.size = new Vector2(box.size.x, 0.5f);
             anim.SetBool("isDodge", true);
         }
-        else if(Input.GetKeyUp(KeyCode.Z))
+        else if(dodgeTime <= 0 || !isOnGround)
         {
             box.offset = new Vector2(box.offset.x, originalOffsetY);
             box.size = new Vector2(box.size.x, originalSizeY);
             anim.SetBool("isDodge", false);
+            dodgeTime = 0;
         }*/
         
         //when the jump button is clicked, this method plays the jump animation.
