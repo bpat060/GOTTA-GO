@@ -538,12 +538,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 259495331}
   m_CullTransparentMesh: 1
---- !u!1 &390056056 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5143711940243438743, guid: b2a9b0a872677854d8ed89bf1416bb13,
-    type: 3}
-  m_PrefabInstance: {fileID: 6870502978396933169}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &731044218
 GameObject:
   m_ObjectHideFlags: 0
@@ -2144,7 +2138,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1737912501}
-  - component: {fileID: 1737912500}
   - component: {fileID: 1737912499}
   m_Layer: 0
   m_Name: LeftBound
@@ -2165,29 +2158,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7efcdd78797280749839b3a37ca9fdf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1737912500
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1737912498}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e8fc54c046b9e24aa0854a84c2e7f60, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maps:
-  - {fileID: 6870502977649559974, guid: b2a9b0a872677854d8ed89bf1416bb13, type: 3}
-  obstacles:
-  - {fileID: 4295962806426308899, guid: 8d37107aae0f9834b85f0d406aa9331e, type: 3}
-  - {fileID: 1678059673172592069, guid: 7a6f13c680cb41343834da2c26f6c787, type: 3}
-  minipowers:
-  - {fileID: 5002817235517596118, guid: d021c489fa32a1b419ce8df52a15531f, type: 3}
-  - {fileID: 390056056}
-  platform: {fileID: 7824984624482263776, guid: 354c217ffb716584c99702ec8a2d765f,
-    type: 3}
-  spawnPosX: 5
 --- !u!4 &1737912501
 Transform:
   m_ObjectHideFlags: 0
