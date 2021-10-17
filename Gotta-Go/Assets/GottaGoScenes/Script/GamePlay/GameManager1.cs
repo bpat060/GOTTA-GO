@@ -32,6 +32,8 @@ public class GameManager1 : MonoBehaviour
     public void RestartGame()
     {
         SceneManager.LoadScene(2);
+        //Save score
+        //PlayFabManager.SendLeaderboard(PlayerController.totalScore);
         StartCoroutine("RestartGameCo");
     }
 

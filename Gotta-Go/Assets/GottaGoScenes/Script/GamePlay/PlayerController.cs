@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
     public GameManager1 gameManager1;
 
     //Score System
-    private int totalScore;
+    public int totalScore;
     //Player get 1 point per second
     private int surviveScore = 1;
     private Text scoreText;
@@ -50,6 +50,7 @@ public class PlayerController : MonoBehaviour
         anim = GetComponent<Animator>();
         box = GetComponent<BoxCollider2D>();
         scoreText = GameObject.Find("Score").GetComponent<Text>();
+        totalScore = GetComponent<int>();
     }
 
     // Update is called once per frame
@@ -63,7 +64,7 @@ public class PlayerController : MonoBehaviour
         scoreText.text = totalScore.ToString();
     }
 
-    private void FixedUpdate() 
+    public void FixedUpdate() 
     {
         //Desktop Player Controls
         /*if (Input.GetKeyDown(KeyCode.Space) && isOnGround && !Input.GetKeyDown(KeyCode.Z) && jumpTime > 0)
@@ -157,6 +158,7 @@ public class PlayerController : MonoBehaviour
         {
             //if collision with an obstacle, player dies and game restarts
             gameManager1.RestartGame();
+
         }
 
         if(collision.CompareTag("MiniPower"))
