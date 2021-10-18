@@ -8,13 +8,19 @@ using Newtonsoft.Json;
 
 public class PlayFabManager : MonoBehaviour
 {
+    //Code to connect database and input and output data
+    //Account menu page, register account and login account and aslo reset password 
+    // have added code for leader board but couldnt complete because different coding styles was hard to conver into the data type I needed.
+
     [Header("UI")]
 
+    //Fields that I needed from the UI
     public Text messageText;
     public InputField emailInput;
     public InputField passwordInput;
     public InputField usernameInput;
 
+    //Resiter button functions 
     public void RegisterButton()
     {
         if (passwordInput.text.Length < 6)
@@ -31,15 +37,16 @@ public class PlayFabManager : MonoBehaviour
         };
         PlayFabClientAPI.RegisterPlayFabUser(request, OnRegisterSuccess, OnError);
     }
-
+    //On register success - code for message output
     void OnRegisterSuccess(RegisterPlayFabUserResult result)
     {
         messageText.text = "Registered and logged in!";
     }
 
+    //Changing scences 
     public GameObject usernameWindow;
     public GameObject hideAccountWindow;
-
+    //Loggin button functions 
     public void LoginButton()
     {
         var request = new LoginWithEmailAddressRequest
@@ -53,7 +60,7 @@ public class PlayFabManager : MonoBehaviour
         };
         PlayFabClientAPI.LoginWithEmailAddress(request, OnLoginSuccess, OnError);
     }
-
+    //What happens if login successful
     void OnLoginSuccess(LoginResult result)
     {
         messageText.text = "Logged In!";
@@ -72,7 +79,7 @@ public class PlayFabManager : MonoBehaviour
             hideAccountWindow.SetActive(false);
         }
     }
-
+    //Button for username - updates username to database
     public void submitUsernameButton()
     {
         var request = new UpdateUserTitleDisplayNameRequest
@@ -81,13 +88,13 @@ public class PlayFabManager : MonoBehaviour
         };
         PlayFabClientAPI.UpdateUserTitleDisplayName(request, OnDisplayNameUpdate, OnError);
     }
-
+    //Displays message when username is saved.
     void OnDisplayNameUpdate(UpdateUserTitleDisplayNameResult result)
     {
         Debug.Log("Username Saved!");
 
     }
-
+    //Reset Password function 
     public void ResetPasswordButton()
     {
         var request = new SendAccountRecoveryEmailRequest
@@ -98,14 +105,14 @@ public class PlayFabManager : MonoBehaviour
         PlayFabClientAPI.SendAccountRecoveryEmail(request, OnPasswordReset, OnError);
 
     }
+    //Message after email is sent to reset password
     void OnPasswordReset(SendAccountRecoveryEmailResult result)
     {
         messageText.text = "Reset Password Email Sent!";
     }
 
-
+    /* Extra code that i used to connect database and test.
     //Start is called before the first frame update
-    /*
     void Start()
     {
         Login();
@@ -127,6 +134,8 @@ public class PlayFabManager : MonoBehaviour
         
     }
     */
+
+    //How to save and send data to database but this code below is not used.
     public AccountData AData;
     public AccountData[] characterBoxes;
 
@@ -168,6 +177,7 @@ public class PlayFabManager : MonoBehaviour
         }
     }
 
+    //Sending leaderboard for display couldnt implement due to codeing differently from another member.
     public void SendLeaderboard(int score)
     {
         var request = new UpdatePlayerStatisticsRequest
@@ -183,12 +193,12 @@ public class PlayFabManager : MonoBehaviour
         };
         PlayFabClientAPI.UpdatePlayerStatistics(request, OnLeaderboardUpdate, OnError);
     }
-
     void OnLeaderboardUpdate(UpdatePlayerStatisticsResult result)
     {
         Debug.Log("Successful Leaderboard Sent");
     }
 
+    //Displays error messages to the game.
     void OnError(PlayFabError error)
     {
         messageText.text = error.ErrorMessage;

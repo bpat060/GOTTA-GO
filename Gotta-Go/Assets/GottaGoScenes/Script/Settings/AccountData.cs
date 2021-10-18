@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Newtonsoft.Json;
 
+//Accessing account data from database for the save and send that is not implemented but was useful to know
 public class AData
 {
     public string email;

@@ -6,6 +6,8 @@ using UnityEngine.EventSystems;
 
 public class ChangeInput : MonoBehaviour
 {
+    //Code to use tab button between inputs and login button and also enter to login
+
     EventSystem system;
     public Selectable firstInput;
     public Button submitButton;
