@@ -68,7 +68,7 @@ public class PlayerController : MonoBehaviour
     public void FixedUpdate() 
     {
         //Desktop Player Controls
-        if (Input.GetKeyDown(KeyCode.Space) && isOnGround && !Input.GetKeyDown(KeyCode.UpArrow) && jumpTime > 0)
+        if (Input.GetKeyDown(KeyCode.Z) && isOnGround && !Input.GetKeyDown(KeyCode.Space) && jumpTime > 0)
         {
             rb.velocity += new Vector2(0, jumpHeight);
             isOnJump = true;
@@ -79,7 +79,7 @@ public class PlayerController : MonoBehaviour
             isOnJump = false;
         }
 
-        if(Input.GetKeyDown(KeyCode.UpArrow) && isOnGround && !Input.GetKeyDown(KeyCode.DownArrow) && dodgeTime > 0)
+        if(Input.GetKeyDown(KeyCode.Space) && isOnGround && !Input.GetKeyDown(KeyCode.Z) && dodgeTime > 0)
         {
             box.offset = new Vector2(box.offset.x, -0.4f);
             box.size = new Vector2(box.size.x, 0.5f);
