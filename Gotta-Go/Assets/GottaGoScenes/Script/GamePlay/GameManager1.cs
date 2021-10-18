@@ -2,12 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using Newtonsoft.Json;
 
 public class GameManager1 : MonoBehaviour
 {
     //variables for the manager
     public Transform spawner;
     private Vector2 spawnerStartPoint;
+
+    //public PlayFabManager playFabManager;
+    //[SerializeField] private PlayFabManager playfabManager;
+    //private readonly PlayFabManager playfabManager = new PlayFabManager();
 
     public PlayerController thePlayer;
     private Vector2 playerStartPoint;
@@ -17,11 +23,24 @@ public class GameManager1 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //playfabManager.Login();
         //sets start spawn for the player
         playerStartPoint = spawner.position;
         playerStartPoint = thePlayer.transform.position;
         
     }
+
+    /*private void Awake()
+    {
+        // Try and get the component if it is attached to the same object as this
+        if (!playfabManager) playfabManager = GetComponent<PlayFabManager>();
+
+        // Or try and find it anywhere in the scene
+        if (!playfabManager) playfabManager = FindObjectOfType<PlayFabManager>();
+
+        // Or simply create and attach it to the same object as this one
+        if (!playfabManager) playfabManager = gameObject.AddComponent<PlayFabManager>();
+    }*/
 
     // Update is called once per frame
     void Update()
@@ -33,7 +52,7 @@ public class GameManager1 : MonoBehaviour
     {
         SceneManager.LoadScene(2);
         //Save score
-        //PlayFabManager.SendLeaderboard(PlayerController.totalScore);
+        //playFabManager.SendLeaderboard(PlayerController.totalScore);
         StartCoroutine("RestartGameCo");
     }
 

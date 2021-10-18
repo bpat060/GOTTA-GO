@@ -13,10 +13,11 @@ public class PlayFabManager : MonoBehaviour
     public Text messageText;
     public InputField emailInput;
     public InputField passwordInput;
+    public InputField usernameInput;
 
     public void RegisterButton()
     {
-        if(passwordInput.text.Length < 6)
+        if (passwordInput.text.Length < 6)
         {
             messageText.text = "Password too short!";
             return;
@@ -26,7 +27,7 @@ public class PlayFabManager : MonoBehaviour
         {
             Email = emailInput.text,
             Password = passwordInput.text,
-            RequireBothUsernameAndEmail = false
+            RequireBothUsernameAndEmail = false,
         };
         PlayFabClientAPI.RegisterPlayFabUser(request, OnRegisterSuccess, OnError);
     }
@@ -36,12 +37,19 @@ public class PlayFabManager : MonoBehaviour
         messageText.text = "Registered and logged in!";
     }
 
+    public GameObject usernameWindow;
+    public GameObject hideAccountWindow;
+
     public void LoginButton()
     {
         var request = new LoginWithEmailAddressRequest
         {
             Email = emailInput.text,
-            Password = passwordInput.text
+            Password = passwordInput.text,
+            InfoRequestParameters = new GetPlayerCombinedInfoRequestParams
+            {
+                GetPlayerProfile = true
+            }
         };
         PlayFabClientAPI.LoginWithEmailAddress(request, OnLoginSuccess, OnError);
     }
@@ -51,6 +59,33 @@ public class PlayFabManager : MonoBehaviour
         messageText.text = "Logged In!";
         Debug.Log("Successful Login");
         GetData();
+
+        string name = null;
+        if (result.InfoResultPayload.PlayerProfile != null)
+        {
+            name = result.InfoResultPayload.PlayerProfile.DisplayName;
+        }
+
+        if (name == null)
+        {
+            usernameWindow.SetActive(true);
+            hideAccountWindow.SetActive(false);
+        }
+    }
+
+    public void submitUsernameButton()
+    {
+        var request = new UpdateUserTitleDisplayNameRequest
+        {
+            DisplayName = usernameInput.text,
+        };
+        PlayFabClientAPI.UpdateUserTitleDisplayName(request, OnDisplayNameUpdate, OnError);
+    }
+
+    void OnDisplayNameUpdate(UpdateUserTitleDisplayNameResult result)
+    {
+        Debug.Log("Username Saved!");
+
     }
 
     public void ResetPasswordButton()
@@ -69,8 +104,9 @@ public class PlayFabManager : MonoBehaviour
     }
 
 
-    // Start is called before the first frame update
-    /*void Start()
+    //Start is called before the first frame update
+    /*
+    void Start()
     {
         Login();
     }
@@ -80,9 +116,15 @@ public class PlayFabManager : MonoBehaviour
         var request = new LoginWithCustomIDRequest
         {
             CustomId = SystemInfo.deviceUniqueIdentifier,
-            CreateAccount = true
+            CreateAccount = true,
+            
         };
         PlayFabClientAPI.LoginWithCustomID(request, OnSuccess, OnError);
+    }
+    void OnSuccess(LoginResult result)
+    {
+        Debug.Log("Successful login/account create!");
+        
     }
     */
     public AccountData AData;
@@ -91,7 +133,8 @@ public class PlayFabManager : MonoBehaviour
     public void SaveData()
     {
         List<AData> AccountData = new List<AData>();
-        foreach(var item in characterBoxes){
+        foreach (var item in characterBoxes)
+        {
             AccountData.Add(item.ReturnClass());
         }
         var request = new UpdateUserDataRequest
@@ -118,16 +161,11 @@ public class PlayFabManager : MonoBehaviour
         if (result.Data != null & result.Data.ContainsKey("AData"))
         {
             List<AData> AccountData = JsonConvert.DeserializeObject<List<AData>>(result.Data["AData"].Value);
-            for(int i = 0; i < characterBoxes.Length; i++)
+            for (int i = 0; i < characterBoxes.Length; i++)
             {
                 characterBoxes[i].SetUI(AccountData[i]);
             }
         }
-    }
-
-    void OnSuccess(LoginResult result)
-    {
-        Debug.Log("Successful login/account create!");
     }
 
     public void SendLeaderboard(int score)

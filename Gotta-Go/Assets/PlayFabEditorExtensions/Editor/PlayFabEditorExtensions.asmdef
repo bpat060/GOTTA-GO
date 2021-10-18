@@ -1,27 +1,8 @@
-{
+﻿{
     "name": "PlayFabEditorExtensions",
-    "rootNamespace": "",
     "references": [],
     "includePlatforms": [
-        "Android",
-        "CloudRendering",
-        "Editor",
-        "GameCoreScarlett",
-        "GameCoreXboxOne",
-        "iOS",
-        "LinuxStandalone64",
-        "Lumin",
-        "macOSStandalone",
-        "PS4",
-        "PS5",
-        "Stadia",
-        "Switch",
-        "tvOS",
-        "WSA",
-        "WebGL",
-        "WindowsStandalone32",
-        "WindowsStandalone64",
-        "XboxOne"
+        "Editor"
     ],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
@@ -29,6 +10,5 @@
     "precompiledReferences": [],
     "autoReferenced": true,
     "defineConstraints": [],
-    "versionDefines": [],
-    "noEngineReferences": false
+    "versionDefines": []
 }

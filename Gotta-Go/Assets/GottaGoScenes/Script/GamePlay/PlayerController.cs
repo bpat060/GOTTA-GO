@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
 
     //link to GameManager1
     public GameManager1 gameManager1;
+    //public PlayFabManager playFabManager;
 
     //Score System
     public int totalScore;
