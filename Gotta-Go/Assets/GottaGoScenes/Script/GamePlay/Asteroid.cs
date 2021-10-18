@@ -20,6 +20,7 @@ public class Asteroid : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate() 
     {
+        //set movement for Asteroid
         restTime += Time.deltaTime;
         if(restTime <= 3)
         {

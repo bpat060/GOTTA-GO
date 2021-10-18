@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour
     private int surviveScore = 1;
     private Text scoreText;
     private float surviveTime;
-    //Player get 10 points when Player get the Cherry
+    //Player get 10 points when Player get the Cherry Fruit
     private int scorenerScore = 10;
 
     // Start is called before the first frame update
