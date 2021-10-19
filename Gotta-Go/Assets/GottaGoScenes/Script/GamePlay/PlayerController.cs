@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour
         anim = GetComponent<Animator>();
         box = GetComponent<BoxCollider2D>();
         scoreText = GameObject.Find("Score").GetComponent<Text>();
-        totalScore = GetComponent<int>();
+        //totalScore = GetComponent<int>();
     }
 
     // Update is called once per frame
@@ -68,30 +68,17 @@ public class PlayerController : MonoBehaviour
     public void FixedUpdate() 
     {
         //Desktop Player Controls
-        if (Input.GetKeyDown(KeyCode.Z) && isOnGround && !Input.GetKeyDown(KeyCode.Space) && jumpTime > 0)
+        if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            rb.velocity += new Vector2(0, jumpHeight);
-            isOnJump = true;
+           Jump();
         }
 
-        if(!isOnGround && jumpTime < 0)
+
+        if(Input.GetKeyDown(KeyCode.DownArrow))
         {
-            isOnJump = false;
+            Dodge();
         }
 
-        if(Input.GetKeyDown(KeyCode.Space) && isOnGround && !Input.GetKeyDown(KeyCode.Z) && dodgeTime > 0)
-        {
-            box.offset = new Vector2(box.offset.x, -0.4f);
-            box.size = new Vector2(box.size.x, 0.5f);
-            anim.SetBool("isDodge", true);
-        }
-        else if(dodgeTime <= 0 || !isOnGround)
-        {
-            box.offset = new Vector2(box.offset.x, originalOffsetY);
-            box.size = new Vector2(box.size.x, originalSizeY);
-            anim.SetBool("isDodge", false);
-            dodgeTime = 0;
-        }
         
         //when the jump button is clicked, this method plays the jump animation.
         if(jumpTime > 0 && isOnGround)
